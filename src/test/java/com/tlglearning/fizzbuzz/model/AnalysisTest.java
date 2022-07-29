@@ -11,12 +11,13 @@ import org.junit.jupiter.params.provider.CsvFileSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 class AnalysisTest {
-  private Analysis analysis;
 
   static final Set<State> fizzExpected = EnumSet.of(State.FIZZ);
   static final Set<State> buzzExpected = EnumSet.of(State.BUZZ);
   static final Set<State> fizzBuzzExpected = EnumSet.of(State.FIZZ, State.BUZZ);
   static final Set<State> neitherExpected = EnumSet.noneOf(State.class);
+
+  private Analysis analysis;
 
  @BeforeEach
  public void setUp() throws Exception {
@@ -53,7 +54,7 @@ class AnalysisTest {
    assertThrows(IllegalArgumentException.class, new InvalidInvocation(value));
   }
 
-  private class InvalidInvocation implements Executable {
+  class InvalidInvocation implements Executable {
 
     private final int value;
 
